@@ -1,6 +1,6 @@
 # Desserts 🧁
 
-![Getting Started](./Images/Desserts-Poster.jpg)
+![Getting Started](./Screenshots/Dessert-Poster.jpg)
 
 ## Motivation
 
