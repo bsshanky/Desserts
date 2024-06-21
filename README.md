@@ -32,7 +32,7 @@ The app is designed to display a list of desserts and detailed information about
    
 2. Navigate to the project directory:
     ```
-    cd desserts-app
+    cd Desserts
     ```
     
 3. Open the project in Xcode:

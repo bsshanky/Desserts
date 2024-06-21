@@ -34,6 +34,7 @@ class DessertListService: DessertListProtocol {
     }
 }
 
+// For Unit testing
 class MockDessertListService: DessertListProtocol {
     
     var shouldReturnError = false

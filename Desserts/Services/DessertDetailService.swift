@@ -39,15 +39,12 @@ class DessertDetailService: DessertDetailProtocol {
     }
 }
 
+// For Unit testing
 class MockDessertDetailService: DessertDetailProtocol {
-    
-    enum MockError: Error {
-        case fetchError
-    }
     
     var shouldReturnError = false
     var mockDessertDetail: DessertDetail?
-    var error: Error = MockError.fetchError
+    var error: Error = APIError.unknown
     
     func fetchDessertDetail(by id: String) async throws -> DessertDetail {
         if shouldReturnError {

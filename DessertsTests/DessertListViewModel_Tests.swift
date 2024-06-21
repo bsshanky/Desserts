@@ -15,6 +15,12 @@ import XCTest
 
 final class DessertListViewModelTests: XCTestCase {
     
+    let mockDesserts = [
+        Dessert(id: "53049", dessertName: "Apam balik", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"),
+        Dessert(id: "52893", dessertName: "Apple & Blackberry Crumble", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg"),
+        Dessert(id: "52768", dessertName: "Apple Frangipan Tart", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg")
+    ]
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -25,11 +31,7 @@ final class DessertListViewModelTests: XCTestCase {
     
     @MainActor func test_DessertListViewModel_initialization_withMockData() {
         // Given
-        let mockDesserts = [
-            Dessert(id: "53049", dessertName: "Apam balik", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"),
-            Dessert(id: "52893", dessertName: "Apple & Blackberry Crumble", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg"),
-            Dessert(id: "52768", dessertName: "Apple Frangipan Tart", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg")
-        ]
+        
         
         // When
         let viewModel = DessertListViewModel(mockDesserts: mockDesserts)
@@ -43,11 +45,7 @@ final class DessertListViewModelTests: XCTestCase {
     @MainActor func test_DessertListViewModel_fetchDesserts_success() async {
         // Given
         let mockService = MockDessertListService()
-        mockService.mockDesserts = [
-            Dessert(id: "53049", dessertName: "Apam balik", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"),
-            Dessert(id: "52893", dessertName: "Apple & Blackberry Crumble", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg"),
-            Dessert(id: "52768", dessertName: "Apple Frangipan Tart", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg")
-        ]
+        mockService.mockDesserts = mockDesserts
         
         let viewModel = DessertListViewModel(service: mockService)
         
@@ -139,28 +137,28 @@ final class DessertListViewModelTests: XCTestCase {
     
     @MainActor func test_DessertListViewModel_searchFunctionality_withSearchText() {
         // Given
-        let mockDesserts = [
-            Dessert(id: "1", dessertName: "Chocolate Cake", dessertThumbUrl: ""),
-            Dessert(id: "2", dessertName: "Apple Pie", dessertThumbUrl: ""),
-            Dessert(id: "3", dessertName: "Cheesecake", dessertThumbUrl: "")
-        ]
+//        let mockDesserts = [
+//            Dessert(id: "1", dessertName: "Chocolate Cake", dessertThumbUrl: ""),
+//            Dessert(id: "2", dessertName: "Apple Pie", dessertThumbUrl: ""),
+//            Dessert(id: "3", dessertName: "Cheesecake", dessertThumbUrl: "")
+//        ]
         let viewModel = DessertListViewModel(mockDesserts: mockDesserts)
         
         // When
         viewModel.searchText = "Apple"
         
         // Then
-        XCTAssertEqual(viewModel.filteredDesserts.count, 1)
-        XCTAssertEqual(viewModel.filteredDesserts.first?.dessertName, "Apple Pie")
+        XCTAssertEqual(viewModel.filteredDesserts.count, 2)
+        XCTAssertEqual(viewModel.filteredDesserts.first?.dessertName, "Apple & Blackberry Crumble")
     }
     
     @MainActor func test_DessertListViewModel_searchFunctionality_emptySearchText() {
         // Given
-        let mockDesserts = [
-            Dessert(id: "1", dessertName: "Chocolate Cake", dessertThumbUrl: ""),
-            Dessert(id: "2", dessertName: "Apple Pie", dessertThumbUrl: ""),
-            Dessert(id: "3", dessertName: "Cheesecake", dessertThumbUrl: "")
-        ]
+//        let mockDesserts = [
+//            Dessert(id: "1", dessertName: "Chocolate Cake", dessertThumbUrl: ""),
+//            Dessert(id: "2", dessertName: "Apple Pie", dessertThumbUrl: ""),
+//            Dessert(id: "3", dessertName: "Cheesecake", dessertThumbUrl: "")
+//        ]
         let viewModel = DessertListViewModel(mockDesserts: mockDesserts)
         
         // When

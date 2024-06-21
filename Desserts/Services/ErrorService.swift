@@ -16,10 +16,14 @@ enum APIError: Error, CustomStringConvertible {
     
     var localizedDescription: String {
         switch self {
-        case .badURL, .parsing, .unknown:
-            return "Unexpected error occurred :("
-        case .badResponse:
-            return "No internet connection :("
+        case .unknown:
+            return "Unexpected error occurred."
+        case .badURL:
+            return "Cannot reach server."
+        case .parsing(_):
+            return "Unable to fetch data."
+        case .badResponse(let statusCode):
+            return "Bad response \(statusCode)"
         }
     }
     

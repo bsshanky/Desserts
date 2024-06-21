@@ -79,7 +79,7 @@ struct CacheAsyncImage_Previews: PreviewProvider {
                     .shadow(radius: 10)
                     .padding()
             @unknown default:
-                fatalError()
+                EmptyView()
             }
         }
     }

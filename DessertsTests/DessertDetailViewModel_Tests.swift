@@ -23,11 +23,11 @@ final class DessertDetailViewModel_Tests: XCTestCase {
     @MainActor func test_DessertDetailViewModel_fetchDessertDetail_success() async {
         // Given
         let mockDetail = DessertDetail(
-            id: "123",
-            countryOfOrigin: "Italy",
+            id: "53049",
+            countryOfOrigin: "Malaysia",
             instructions: "Mix and bake",
-            youtubeURL: "https://example.com",
-            ingredients: ["Sugar", "Flour", "Eggs"]
+            youtubeURL: "https://www.youtube.com/watch?v=6R8ffRRJcrg",
+            ingredients: ["50g Sugar", "50g Flour", "5 Eggs", "250ml Water"]
         )
         
         let mockService = MockDessertDetailService()
@@ -35,13 +35,13 @@ final class DessertDetailViewModel_Tests: XCTestCase {
         let viewModel = DessertDetailViewModel(service: mockService)
         
         // When
-        await viewModel.fetchDessertDetail(for: "123")
+        await viewModel.fetchDessertDetail(for: "53049")
         
         // Then
         XCTAssertFalse(viewModel.isLoading)
         XCTAssertNotNil(viewModel.dessertDetail)
-        XCTAssertEqual(viewModel.dessertDetail?.id, "123")
-        XCTAssertEqual(viewModel.dessertDetail?.countryOfOrigin, "Italy")
+        XCTAssertEqual(viewModel.dessertDetail?.id, "53049")
+        XCTAssertEqual(viewModel.dessertDetail?.countryOfOrigin, "Malaysia")
         XCTAssertNil(viewModel.errorMessage)
     }
     
@@ -72,7 +72,7 @@ final class DessertDetailViewModel_Tests: XCTestCase {
         let viewModel = DessertDetailViewModel(service: mockService)
         
         // When
-        await viewModel.fetchDessertDetail(for: "123")
+        await viewModel.fetchDessertDetail(for: "53049")
         
         // Then
         XCTAssertFalse(viewModel.isLoading)
@@ -91,7 +91,7 @@ final class DessertDetailViewModel_Tests: XCTestCase {
         let viewModel = DessertDetailViewModel(service: mockService)
         
         // When
-        await viewModel.fetchDessertDetail(for: "123")
+        await viewModel.fetchDessertDetail(for: "53049")
         
         // Then
         XCTAssertFalse(viewModel.isLoading)
@@ -109,7 +109,7 @@ final class DessertDetailViewModel_Tests: XCTestCase {
         let viewModel = DessertDetailViewModel(service: mockService)
         
         // When
-        await viewModel.fetchDessertDetail(for: "123")
+        await viewModel.fetchDessertDetail(for: "53049")
         
         // Then
         XCTAssertFalse(viewModel.isLoading)

@@ -30,13 +30,6 @@ class DessertListViewModel: ObservableObject {
         self.isLoading = false
     }
     
-//    // Initializer for using mock data
-//    init(mockDesserts: [Dessert]) {
-//        self.dessertListService = DessertListService()
-//        self.desserts = mockDesserts
-//        self.isLoading = false
-//    }
-    
     func fetchDesserts() async {
         isLoading = true
         errorMessage = nil
