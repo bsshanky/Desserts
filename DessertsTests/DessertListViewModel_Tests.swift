@@ -12,7 +12,6 @@ import XCTest
 
 // Testing structure: Given, When, Then
 
-
 final class DessertListViewModelTests: XCTestCase {
     
     let mockDesserts = [
@@ -137,11 +136,6 @@ final class DessertListViewModelTests: XCTestCase {
     
     @MainActor func test_DessertListViewModel_searchFunctionality_withSearchText() {
         // Given
-//        let mockDesserts = [
-//            Dessert(id: "1", dessertName: "Chocolate Cake", dessertThumbUrl: ""),
-//            Dessert(id: "2", dessertName: "Apple Pie", dessertThumbUrl: ""),
-//            Dessert(id: "3", dessertName: "Cheesecake", dessertThumbUrl: "")
-//        ]
         let viewModel = DessertListViewModel(mockDesserts: mockDesserts)
         
         // When
@@ -154,11 +148,7 @@ final class DessertListViewModelTests: XCTestCase {
     
     @MainActor func test_DessertListViewModel_searchFunctionality_emptySearchText() {
         // Given
-//        let mockDesserts = [
-//            Dessert(id: "1", dessertName: "Chocolate Cake", dessertThumbUrl: ""),
-//            Dessert(id: "2", dessertName: "Apple Pie", dessertThumbUrl: ""),
-//            Dessert(id: "3", dessertName: "Cheesecake", dessertThumbUrl: "")
-//        ]
+
         let viewModel = DessertListViewModel(mockDesserts: mockDesserts)
         
         // When
