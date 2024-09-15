@@ -26,6 +26,23 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+//#Preview {
+////    let mockNetwork = Network(forPreview: true)
+////    
+////    var previews: some View {
+////            ContentView().environmentObject(mockNetwork)
+////
+////        }
+//    ContentView()
+//}
+
+struct ContentView_Previews: PreviewProvider {
+
+    static var previews: some View {
+
+        ContentView().environmentObject({ () -> Network in
+            let mockNetwork = Network(forPreview: true)
+            return mockNetwork
+        }() )
+    }
 }

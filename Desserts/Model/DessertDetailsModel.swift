@@ -3,7 +3,7 @@
 //  Desserts
 //
 //  Created by Shashank  on 6/19/24.
-//
+// https://itnext.io/decodable-with-dynamic-keys-in-swift-78f4293f5654
 
 import Foundation
 
@@ -49,19 +49,37 @@ struct DessertDetail: Codable, Identifiable {
         
         let rawContainer = try decoder.container(keyedBy: RawCodingKeys.self)
         
-        for i in 1...20 {
+        var i: Int = 1
+        var hasIngredient: Bool = true
+        
+        while (hasIngredient) {
+            
+            var ingredient: String
+            var measure: String
             
             guard let ingredientKey = RawCodingKeys(stringValue: "strIngredient\(i)"),
                   let measureKey = RawCodingKeys(stringValue: "strMeasure\(i)") else {
-                continue // Skip if either key cannot be created
+                
+                break // Skip if either key cannot be created
+            }
+            
+            do {
+                ingredient = try rawContainer.decode(String.self, forKey: ingredientKey)
+                measure = try rawContainer.decode(String.self, forKey: measureKey)
+            } catch {
+                hasIngredient =  false
+                break
             }
 
-            let ingredient = try rawContainer.decodeIfPresent(String.self, forKey: ingredientKey)
-            let measure = try rawContainer.decodeIfPresent(String.self, forKey: measureKey)
-            
-            if let ingredient = ingredient, !ingredient.isEmpty, let measure = measure, !measure.isEmpty {
+            if !ingredient.isEmpty && !measure.isEmpty {
                 ingredients.append("\(measure) \(ingredient)")
             }
+            
+//            let ingredient = ingredient, !ingredient.isEmpty, let measure = measure, !measure.isEmpty {
+//                
+//            }
+            
+            i += 1
         }
         
         self.ingredients = ingredients

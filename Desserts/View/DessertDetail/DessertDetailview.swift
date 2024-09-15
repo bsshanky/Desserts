@@ -151,6 +151,7 @@ struct DessertDetailView: View {
  // MARK: PREVIEW
 
 struct DessertDetailView_Previews: PreviewProvider {
+    
     @State static var mockDessert: Dessert? = Dessert(id: "53049", dessertName: "Apam balik", dessertThumbUrl: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg")
     
     static var mockDetail = DessertDetail(
@@ -177,7 +178,7 @@ struct DessertDetailView_Previews: PreviewProvider {
 
     static var previews: some View {
         DessertDetailView(viewModel: mockVM, selectedDessert: $mockDessert).environmentObject(mockNetwork)
-            
+
     }
 }
 

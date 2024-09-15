@@ -53,6 +53,20 @@ struct CacheAsyncImage<Content>: View where Content: View {
     }
 }
 
+fileprivate class ImageCache {
+    static private var cache: [URL: Image] = [:]
+
+    static subscript(url: URL) -> Image? {
+        get {
+            ImageCache.cache[url]
+        }
+        set {
+            ImageCache.cache[url] = newValue
+        }
+    }
+}
+
+
 struct CacheAsyncImage_Previews: PreviewProvider {
         
     static var previews: some View {
@@ -86,15 +100,3 @@ struct CacheAsyncImage_Previews: PreviewProvider {
 }
 
 
-fileprivate class ImageCache {
-    static private var cache: [URL: Image] = [:]
-
-    static subscript(url: URL) -> Image? {
-        get {
-            ImageCache.cache[url]
-        }
-        set {
-            ImageCache.cache[url] = newValue
-        }
-    }
-}

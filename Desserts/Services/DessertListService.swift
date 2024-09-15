@@ -15,8 +15,18 @@ protocol DessertListProtocol {
 class DessertListService: DessertListProtocol {
     
     private let baseURL = APIEndpoints.dessertsList
+    private let network = Network()
+    
+//    init(network: Network) {
+//        self.network = network
+//    }
     
     func fetchDesserts() async throws -> [Dessert] {
+        
+        if !network.connected {
+            throw APIError.noInternetConnection
+        }
+        
         guard let url = URL(string: baseURL) else {
             throw APIError.badURL
         }
@@ -29,8 +39,19 @@ class DessertListService: DessertListProtocol {
         }
         
         // Decode the JSON data into the desired model
-        let responseModel = try JSONDecoder().decode(DessertListResponse.self, from: data)
-        return responseModel.desserts
+//        let responseModel = try JSONDecoder().decode(DessertListResponse.self, from: data)
+//        return responseModel.desserts
+        
+        
+        do {
+            // Decode the JSON data into the desired model
+            let responseModel = try JSONDecoder().decode(DessertListResponse.self, from: data)
+            return responseModel.desserts
+        } catch let decodingError as DecodingError {
+            throw APIError.parsing(decodingError)
+        } catch {
+            throw APIError.unknown
+        }
     }
 }
 
@@ -49,5 +70,15 @@ class MockDessertListService: DessertListProtocol {
     }
 }
 
+/*
+
+
+ the MockDessertListService class is designed for testing purposes. In software development, particularly when writing unit tests, it is often useful to replace real responses with mock versions. This helps isolate the unit of code being tested and allows you to simulate various scenarios, including error conditions and specific data responses, without relying on external systems or networks.
+ 
+ 
+ I am not handling all the errors in the resposnse.
+
+
+ */
 
 

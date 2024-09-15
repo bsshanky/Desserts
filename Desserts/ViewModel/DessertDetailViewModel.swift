@@ -21,7 +21,7 @@ class DessertDetailViewModel: ObservableObject {
     }
     
     // Initializer for using mock data
-    init(mockDetail: DessertDetail, service: DessertDetailService = DessertDetailService()) {
+    init(mockDetail: DessertDetail, service: DessertDetailProtocol = MockDessertDetailService()) {
         self.dessertDetail = mockDetail
         self.isLoading = false
         self.errorMessage = nil

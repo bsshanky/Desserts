@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol DessertDetailProtocol {
+protocol DessertDetailProtocol: Sendable {
     
     func fetchDessertDetail(by id: String) async throws -> DessertDetail
 }
 
-class DessertDetailService: DessertDetailProtocol {
+final class DessertDetailService: DessertDetailProtocol {
     
     func fetchDessertDetail(by id: String) async throws -> DessertDetail {
         let urlString = APIEndpoints.dessertDetail + "\(id)"

@@ -62,10 +62,3 @@ The app is designed to display a list of desserts and detailed information about
 - Endpoint: https://themealdb.com/api/json/v1/1/lookup.php?i=MEAL_ID
 - Response: JSON object with dessert details.
 
-## Acknowledgements
-
-I would like to extend my sincere gratitude to the recruitment team at Fetch for providing me with this opportunity to work on this take-home assignment. It has been an invaluable learning experience.
-
-Having primarily worked with Core Data in SwiftUI, this project was my first foray into fetching and displaying data from an API using SwiftUI. While the concepts are not entirely new to me—thanks to my experience with similar projects in UIKit—implementing them in SwiftUI has been a rewarding challenge.
-
-I am excited about the possibility of advancing to the next stages of the recruitment process and look forward to the opportunity to contribute further.

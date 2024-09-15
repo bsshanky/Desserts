@@ -14,7 +14,9 @@ struct DessertListView: View {
     @Binding var selectedDessert: Dessert?
     
     init(selectedDessert: Binding<Dessert?>) {
-        let viewModel = DessertListViewModel()
+//        let service = DessertListService(network: Network())
+        let service = DessertListService()
+        let viewModel = DessertListViewModel(service: service)
         _viewModel = StateObject(wrappedValue: viewModel)
         _selectedDessert = selectedDessert
     }

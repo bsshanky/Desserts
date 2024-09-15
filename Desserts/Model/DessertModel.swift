@@ -28,5 +28,3 @@ struct DessertListResponse: Codable {
         case desserts = "meals" // Mapping the "meals" key in JSON to the "desserts" property
     }
 }
-
-

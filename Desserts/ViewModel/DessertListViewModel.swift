@@ -17,7 +17,8 @@ class DessertListViewModel: ObservableObject {
     
     private let dessertListService: DessertListProtocol
     
-    init(service: DessertListProtocol = DessertListService()) {
+//    init(service: DessertListProtocol = DessertListService()) {
+    init(service: DessertListProtocol) {
         self.dessertListService = service
         Task {
             await fetchDesserts()

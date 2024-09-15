@@ -13,6 +13,7 @@ enum APIError: Error, CustomStringConvertible {
     case badResponse(statusCode: Int)
     case parsing(DecodingError?)
     case unknown
+    case noInternetConnection
     
     var localizedDescription: String {
         switch self {
@@ -24,6 +25,8 @@ enum APIError: Error, CustomStringConvertible {
             return "Unable to fetch data."
         case .badResponse(let statusCode):
             return "Bad response \(statusCode)"
+        case .noInternetConnection:
+            return "No internet connection."
         }
     }
     
@@ -35,6 +38,14 @@ enum APIError: Error, CustomStringConvertible {
             return "parsing error: \(error?.localizedDescription ?? "")"
         case .badResponse(let statusCode):
             return "bad response; status code \(statusCode)"
+        case .noInternetConnection:
+            return "no internet connection"
         }
     }
 }
+
+/*
+ 
+ By conforming to CustomStringConvertible, you can control how instances of your types are represented as strings, making debugging and logging more informative and easier to read.
+ 
+ */
